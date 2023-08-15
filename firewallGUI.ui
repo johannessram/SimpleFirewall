@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Firewall personnalisé</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:#009999;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size:18px;
+font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string>MY FIREWALL</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>741</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:3px solid white;
+font-size:15px;
+background-color:#336699;
+</string>
+    </property>
+    <property name="title">
+     <string>CREATE RULE</string>
+    </property>
+    <widget class="QComboBox" name="comboBoxChain">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>60</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:white;
+color:black;</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>INPUT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>OUTPUT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FORWARD</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxOption">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>60</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:white;
+padding-left:10px;
+color:black;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>-A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>-I</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxProtocol">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>60</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:white;
+padding-left:10px;
+color:black;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>tcp</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>udp</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>icmp</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBoxAction">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>60</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+padding-left:10px;
+color:black;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>--</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ACCEPT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>REJECT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>DROP</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>chain</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>30</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>option</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>30</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>protocol</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>30</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>action</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_create">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>100</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #009933;
+border:none;
+border-radius:10px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>CREATE</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>30</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>port</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxPort">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>60</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+padding-left:5px;
+color:black;</string>
+     </property>
+     <property name="maximum">
+      <number>99999</number>
+     </property>
+    </widget>
+    <zorder>comboBoxChain</zorder>
+    <zorder>comboBoxOption</zorder>
+    <zorder>comboBoxAction</zorder>
+    <zorder>label_2</zorder>
+    <zorder>label_3</zorder>
+    <zorder>label_4</zorder>
+    <zorder>label_5</zorder>
+    <zorder>btn_create</zorder>
+    <zorder>label_8</zorder>
+    <zorder>comboBoxProtocol</zorder>
+    <zorder>spinBoxPort</zorder>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>260</y>
+      <width>741</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:3px solid white;
+font-size:15px;
+background-color:#336699;
+font:white;</string>
+    </property>
+    <property name="title">
+     <string>READ OR DELETE A RULE</string>
+    </property>
+    <widget class="QComboBox" name="comboBoxRead">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+color:black;
+background-color:white;
+</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>INPUT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>OUTPUT</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FORWARD</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="btn_display">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>40</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#ff9900;
+border:none;
+border-radius:10px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>DISPLAY</string>
+     </property>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>90</y>
+       <width>661</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:#85adad;
+
+</string>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>661</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>651</width>
+         <height>192</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>651</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ContiguousSelection</enum>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>208</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>38</number>
+       </attribute>
+       <row>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>Target</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Port</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Protocol</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="btn_delete">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>330</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:#cc0000;
+border-radius:10px;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>DELETE</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxSelection">
+     <property name="geometry">
+      <rect>
+       <x>491</x>
+       <y>331</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+padding-left:5px;
+color:black;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>330</y>
+       <width>301</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:13px;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>select the index of the rule you wish to delete</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>250</y>
+       <width>661</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:25px;
+border:none;
+font-weight:bold;</string>
+     </property>
+     <property name="text">
+      <string>_______________________________________________________</string>
+     </property>
+    </widget>
+    <zorder>comboBoxRead</zorder>
+    <zorder>btn_display</zorder>
+    <zorder>btn_delete</zorder>
+    <zorder>spinBoxSelection</zorder>
+    <zorder>label_6</zorder>
+    <zorder>label_7</zorder>
+    <zorder>scrollArea</zorder>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
