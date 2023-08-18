@@ -38,6 +38,6 @@ It is how to handle the packet: <a style="color: pink"> ACCEPT </a>, <a style="c
 </br>
 
 # Note :
-I encourage you to test it and read the code, i sincerely appreciate getting feedback and code reviews. Contact me here: johannessramiandrisoa@gmail.com.
+I encourage you to test it and read the code, i sincerely appreciate getting feedback and code reviews. Contact me here: johannessram@gmail.com.
 </br>
 My teammate's GitHub username is: [scoudaaa](https://github.com/scoudaaa)
