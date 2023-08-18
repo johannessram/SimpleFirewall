@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Firewall personnalisé</string>
+   <string>MainWindow</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#009999;</string>
@@ -34,7 +34,7 @@
      <rect>
       <x>320</x>
       <y>10</y>
-      <width>141</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -50,9 +50,9 @@ font-weight:bold;</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>70</y>
+      <y>40</y>
       <width>741</width>
-      <height>151</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -68,7 +68,7 @@ background-color:#336699;
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>60</y>
+       <y>50</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -105,8 +105,8 @@ color:black;</string>
     <widget class="QComboBox" name="comboBoxOption">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>60</y>
+       <x>40</x>
+       <y>120</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -136,9 +136,9 @@ color:black;</string>
     <widget class="QComboBox" name="comboBoxProtocol">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>60</y>
-       <width>81</width>
+       <x>170</x>
+       <y>50</y>
+       <width>101</width>
        <height>31</height>
       </rect>
      </property>
@@ -172,9 +172,9 @@ color:black;</string>
     <widget class="QComboBox" name="comboBoxAction">
      <property name="geometry">
       <rect>
-       <x>610</x>
-       <y>60</y>
-       <width>91</width>
+       <x>170</x>
+       <y>120</y>
+       <width>101</width>
        <height>31</height>
       </rect>
      </property>
@@ -208,7 +208,7 @@ color:black;</string>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>40</x>
        <y>30</y>
        <width>61</width>
        <height>16</height>
@@ -226,8 +226,8 @@ font-size:20px;
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>30</y>
+       <x>50</x>
+       <y>90</y>
        <width>61</width>
        <height>21</height>
       </rect>
@@ -244,9 +244,9 @@ font-size:20px;
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>30</y>
-       <width>81</width>
+       <x>180</x>
+       <y>20</y>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -262,8 +262,8 @@ font-size:20px;
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>620</x>
-       <y>30</y>
+       <x>190</x>
+       <y>100</y>
        <width>61</width>
        <height>16</height>
       </rect>
@@ -281,7 +281,7 @@ font-size:20px;
      <property name="geometry">
       <rect>
        <x>610</x>
-       <y>100</y>
+       <y>120</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -299,8 +299,44 @@ color:white;</string>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>500</x>
-       <y>30</y>
+       <x>320</x>
+       <y>90</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>dest port</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>20</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>source port</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>90</y>
        <width>61</width>
        <height>31</height>
       </rect>
@@ -311,15 +347,100 @@ font-size:20px;
 </string>
      </property>
      <property name="text">
-      <string>port</string>
+      <string>dest IP</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBoxPort">
+    <widget class="QLineEdit" name="txt_destIp">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>60</y>
+       <x>460</x>
+       <y>120</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+color:black;</string>
+     </property>
+     <property name="text">
+      <string>--</string>
+     </property>
+     <property name="maxLength">
+      <number>15</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_sPort">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>50</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+padding-left:5px;
+color:black;</string>
+     </property>
+     <property name="maximum">
+      <number>99999</number>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txt_sourceIp">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>50</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:white;
+border:none;
+color:black;</string>
+     </property>
+     <property name="text">
+      <string>--</string>
+     </property>
+     <property name="maxLength">
+      <number>15</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>20</y>
        <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+font-size:20px;
+</string>
+     </property>
+     <property name="text">
+      <string>source IP</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_dPort">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>111</width>
        <height>31</height>
       </rect>
      </property>
@@ -343,7 +464,13 @@ color:black;</string>
     <zorder>btn_create</zorder>
     <zorder>label_8</zorder>
     <zorder>comboBoxProtocol</zorder>
-    <zorder>spinBoxPort</zorder>
+    <zorder>label_9</zorder>
+    <zorder>label_10</zorder>
+    <zorder>txt_destIp</zorder>
+    <zorder>spinBox_sPort</zorder>
+    <zorder>label_11</zorder>
+    <zorder>txt_sourceIp</zorder>
+    <zorder>spinBox_dPort</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
@@ -361,7 +488,7 @@ background-color:#336699;
 font:white;</string>
     </property>
     <property name="title">
-     <string>READ OR DELETE A RULE</string>
+     <string>READ OR DELETE RULE</string>
     </property>
     <widget class="QComboBox" name="comboBoxRead">
      <property name="geometry">
@@ -449,7 +576,7 @@ background-color:#85adad;
          <x>0</x>
          <y>0</y>
          <width>651</width>
-         <height>192</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="maximumSize">
@@ -481,6 +608,11 @@ background-color:#85adad;
          <string>1</string>
         </property>
        </row>
+       <row>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </row>
        <column>
         <property name="text">
          <string>Target</string>
@@ -488,14 +620,37 @@ background-color:#85adad;
        </column>
        <column>
         <property name="text">
-         <string>Port</string>
+         <string>Protocol</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Protocol</string>
+         <string>Destination</string>
         </property>
        </column>
+       <column>
+        <property name="text">
+         <string>DestPort</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Source</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>SourcePort</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+        </property>
+       </item>
       </widget>
      </widget>
     </widget>
@@ -534,23 +689,6 @@ padding-left:5px;
 color:black;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>330</y>
-       <width>301</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font-size:13px;
-border:none;</string>
-     </property>
-     <property name="text">
-      <string>select the index of the rule you wish to delete</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
@@ -569,13 +707,30 @@ font-weight:bold;</string>
       <string>_______________________________________________________</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>330</y>
+       <width>301</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size:13px;
+border:none;</string>
+     </property>
+     <property name="text">
+      <string>select the index of the rule you wish to delete</string>
+     </property>
+    </widget>
     <zorder>comboBoxRead</zorder>
     <zorder>btn_display</zorder>
     <zorder>btn_delete</zorder>
     <zorder>spinBoxSelection</zorder>
-    <zorder>label_6</zorder>
     <zorder>label_7</zorder>
     <zorder>scrollArea</zorder>
+    <zorder>label_12</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

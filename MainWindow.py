@@ -1,4 +1,7 @@
-import sys
+'''
+    this file serves as the Controller between Front and Back end
+'''
+
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QTableWidgetItem
@@ -37,52 +40,68 @@ class MainWindow:
         index = self.ui.spinBoxSelection.value()
         self.ui.tableWidget.selectRow(index + START_INDEX)
 
+    def _get_creation_attributes(self) -> dict:
+        attributes = {}
+        attributes['chain'] = self.ui.comboBoxChain.currentText()
+        attributes['target'] = action = self.ui.comboBoxAction.currentText()
+        attributes['option'] = self.ui.comboBoxOption.currentText()
+        attributes['protocol'] = self.ui.comboBoxProtocol.currentText()
+        attributes['dport'] = self.ui.spinBox_dPort.value()
+        attributes['sport'] = self.ui.spinBox_sPort.value()
+        attributes['source'] = self.ui.txt_sourceIp.text()
+        attributes['destination'] = self.ui.txt_destIp.text()
+        self._convert_into_create_rule_args(attributes)
+        return attributes
+
+    def _convert_into_create_rule_args(self, attributes):
+        bottom = attributes.pop('option')
+        attributes['bottom'] = bottom
+
     def create_rule(self):
-        chain = self.ui.comboBoxChain.currentText()
-        target = action = self.ui.comboBoxAction.currentText()
-        option = self.ui.comboBoxOption.currentText()
-        protocol = self.ui.comboBoxProtocol.currentText()
-        port = self.ui.spinBoxPort.value()
+        attributes = self._get_creation_attributes()
         self.reset_creation()
-        if chain == '--' or option == '--' or target == '--':
+        if attributes['chain'] == '--' or attributes['bottom'] == '--' or attributes['target'] == '--':
             return
-        if protocol == '--':
+        if attributes['protocol'] == '--':
             DEFAULT_ARG_FOR_PROTOCOL = ''
-            protocol = DEFAULT_ARG_FOR_PROTOCOL
+            attributes['protocol'] = DEFAULT_ARG_FOR_PROTOCOL
 
         possibilities = ('-I', '-A')
-        option = bool(possibilities.index(option))
+        selected_action = attributes['bottom']
+        attributes['bottom'] = bool(possibilities.index(selected_action))
 
         try:
-            self.firewall.create_rule(chain, target, bottom=option, protocol=protocol, port=port)
+            self.firewall.create_rule(**attributes)
         except Firewall.CommandError as exception:
             self.handle(exception)
 
     def read_rules(self):
         SHIFT_INDEX_RIGHT = +1
-        self.ui.tableWidget.clear()
-        self.ui.tableWidget.setHorizontalHeaderLabels(['Target', 'Protocol', 'Port'])
         try:
             table = self.firewall.read_rules(self.ui.comboBoxRead.currentText())
         except Firewall.CommandError as exception:
             self.handle(exception)
 
         if len(table) == 0:
-            self.ui.tableWidget.setRowCount(1)
+            self.ui.tableWidget.setRowCount(SHIFT_INDEX_RIGHT)
             return
+
         self.ui.tableWidget.setRowCount(len(table))
+        HIDDEN_COL_INDEX = 2
         for i, line in enumerate(table):
-            self.ui.tableWidget.setItem(i, 0, QTableWidgetItem(line[0]))
-            self.ui.tableWidget.setItem(i, 1, QTableWidgetItem(line[1]))
-            self.ui.tableWidget.setItem(i, 2, QTableWidgetItem(line[5]))
+            line.pop(HIDDEN_COL_INDEX)
+            for j, word in enumerate(line):
+                self.ui.tableWidget.setItem(i, j, QTableWidgetItem(word))
 
     def delete_rule(self):
-        self.reset_deletion()
-        START_INDEX = +1
         chain = self.ui.comboBoxRead.currentText()
-        number = self.ui.tableWidget.currentRow() + START_INDEX
+        number = self.ui.spinBoxSelection.value()
+        self.reset_deletion()
         try:
+            NO_SELECTION = 0
             self.firewall.delete_rule(chain, number)
+            self.ui.spinBoxSelection.setValue(NO_SELECTION)
+            self.read_rules()
         except Firewall.CommandError as exception:
             self.handle(exception)
 
@@ -92,13 +111,16 @@ class MainWindow:
     def reset_creation(self):
         FIRST_INDEX = 0
         INVALID_PORT = 0
+        DEFAULT_TEXT = '--'
         self.ui.comboBoxChain.setCurrentIndex(FIRST_INDEX)
         self.ui.comboBoxAction.setCurrentIndex(FIRST_INDEX)
         self.ui.comboBoxOption.setCurrentIndex(FIRST_INDEX)
         self.ui.comboBoxProtocol.setCurrentIndex(FIRST_INDEX)
-        self.ui.spinBoxPort.setValue(INVALID_PORT)
-    
+        self.ui.txt_destIp.setText(DEFAULT_TEXT)
+        self.ui.txt_sourceIp.setText(DEFAULT_TEXT)
+        self.ui.spinBox_sPort.setValue(INVALID_PORT)
+        self.ui.spinBox_dPort.setValue(INVALID_PORT)
+
     def reset_deletion(self):
         INVALID_INDEX = 0
         self.ui.spinBoxSelection.setValue(INVALID_INDEX)
-

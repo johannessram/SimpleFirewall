@@ -1,6 +1,7 @@
 from abc import ABC
 
 FILE_NAME = 'output_file.txt'
+
 class ParseFirewallOutput(ABC):
     @staticmethod
     def parse():
@@ -25,8 +26,15 @@ class ParseFirewallOutput(ABC):
         return False
 
     @staticmethod
+    def _split_and_parse(line):
+        columns = ParseFirewallOutput._remove_blank_spaces(line)
+        ports = ParseFirewallOutput._get_dport_sport(columns)
+        LAST_ITEM_INDEX = len(columns) - 1
+        columns = columns[:LAST_ITEM_INDEX] + list(ports.values())
+        return columns
+
+    @staticmethod
     def _remove_break(line):
-        BREAK_LENGHT = 2
         return line[0:-1]
 
     @staticmethod
@@ -40,23 +48,23 @@ class ParseFirewallOutput(ABC):
         return columns
 
     @staticmethod
-    def get_dport(columns):
-        PRESENTATION = 'dpt:'
-        shift_index_left = -1
-        port_detail = columns[len(columns) + shift_index_left]
-        try:
-            second_word = port_detail.split(' ')[1]
-            second_word = second_word.split(PRESENTATION)
-            second_word = second_word[1]
-        except IndexError as exception:
-            print(exception)
-            second_word = 'all'
-        return second_word
+    def _get_dport_sport(columns):
+        last_index = len(columns) -1
+        port_detail = columns[last_index]
+        port_detail = port_detail.split(' ')
+        pack = {'sport': 'all', 'dport': 'all'}
+        for word in port_detail:
+            ParseFirewallOutput._parse_ports(pack, word)
+        return pack
 
     @staticmethod
-    def _split_and_parse(line):
-        columns = ParseFirewallOutput._remove_blank_spaces(line)
-        dport = ParseFirewallOutput.get_dport(columns)
-        columns = columns[0:len(columns) - 1] + [dport]
-        return columns
-
+    def _parse_ports(pack, word):
+        PRESENTATION_dpt = 'dpt:'
+        PRESENTATION_spt = 'spt:'
+        VALID_INDEX = 1
+        if PRESENTATION_dpt in word:
+            dport = word.split(PRESENTATION_dpt)
+            pack['dport'] = dport[VALID_INDEX]
+        elif PRESENTATION_spt in word:
+            sport = word.split(PRESENTATION_spt)
+            pack['sport'] = sport[VALID_INDEX]
