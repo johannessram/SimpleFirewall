@@ -1,5 +1,5 @@
 SimpleFirewall
-Project to develop a firewall for a school project. My major, General Computer Science (Informatique generale), combines Software and Database Engineering and System and Network Administration, and I am proud to be part of it. My teammate Scouda did the front-end and I did the back-end and the controller
+Project to develop a firewall for a school project. My major, General Computer Science (Informatique générale), combines Software and Database Engineering and System and Network Administration, and I am proud to be part of it. My teammate Scouda did the front-end and I did the back-end and the controller
 
 
 
