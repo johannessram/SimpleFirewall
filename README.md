@@ -10,12 +10,20 @@ Project to develop a firewall for a school project. My major, General Computer S
 git clone https://github.com/johannessram/SimpleFirewall.git
 ```
 
-2. Run `main.py` using python3
+2. Make sure you have python3 installed. Visit [the official python website](https://www.python.org/downloads/).
+
+3. You need to have `PyQt5` library installed as well. To make sure it is installed, run:
+```bash
+pip install PyQt5
+pip install pyqt5-tools
+```
+
+4. Run `main.py` using python3
 ```bash
 python3 main.py
 ```
 
-3. Create and Delete the rules you want XD
+5. Create and Delete the rules you want XD
 </br>
 </br>
 </br>
