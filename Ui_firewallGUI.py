@@ -76,19 +76,19 @@ class Ui_MainWindow(object):
         self.comboBoxAction.addItem("")
         self.comboBoxAction.addItem("")
         self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setGeometry(QtCore.QRect(40, 30, 61, 16))
+        self.label_2.setGeometry(QtCore.QRect(50, 30, 61, 16))
         self.label_2.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.groupBox)
-        self.label_3.setGeometry(QtCore.QRect(50, 90, 61, 21))
+        self.label_3.setGeometry(QtCore.QRect(50, 100, 61, 21))
         self.label_3.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.groupBox)
-        self.label_4.setGeometry(QtCore.QRect(180, 20, 71, 31))
+        self.label_4.setGeometry(QtCore.QRect(180, 20, 81, 31))
         self.label_4.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
@@ -107,19 +107,19 @@ class Ui_MainWindow(object):
 "color:white;")
         self.btn_create.setObjectName("btn_create")
         self.label_8 = QtWidgets.QLabel(self.groupBox)
-        self.label_8.setGeometry(QtCore.QRect(320, 90, 81, 31))
+        self.label_8.setGeometry(QtCore.QRect(320, 90, 91, 31))
         self.label_8.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.groupBox)
-        self.label_9.setGeometry(QtCore.QRect(310, 20, 101, 31))
+        self.label_9.setGeometry(QtCore.QRect(310, 20, 111, 31))
         self.label_9.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.groupBox)
-        self.label_10.setGeometry(QtCore.QRect(480, 90, 61, 31))
+        self.label_10.setGeometry(QtCore.QRect(480, 90, 71, 31))
         self.label_10.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
@@ -149,7 +149,7 @@ class Ui_MainWindow(object):
         self.txt_sourceIp.setMaxLength(15)
         self.txt_sourceIp.setObjectName("txt_sourceIp")
         self.label_11 = QtWidgets.QLabel(self.groupBox)
-        self.label_11.setGeometry(QtCore.QRect(470, 20, 81, 31))
+        self.label_11.setGeometry(QtCore.QRect(470, 20, 101, 31))
         self.label_11.setStyleSheet("border:none;\n"
 "font-size:20px;\n"
 "")
@@ -332,13 +332,13 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Protocol"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Destination"))
-        item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "DestPort"))
-        item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Source"))
-        item = self.tableWidget.horizontalHeaderItem(5)
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "Destination"))
+        item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "SourcePort"))
+        item = self.tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "DestPort"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
