@@ -14,19 +14,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 680)
+        MainWindow.resize(800, 855)
         MainWindow.setMinimumSize(QtCore.QSize(800, 680))
-        MainWindow.setMaximumSize(QtCore.QSize(800, 680))
         MainWindow.setStyleSheet("background-color:#009999;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(320, 10, 131, 31))
+        self.label.setGeometry(QtCore.QRect(320, 10, 141, 31))
         self.label.setStyleSheet("font-size:18px;\n"
 "font-weight:bold;")
         self.label.setObjectName("label")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(30, 40, 741, 181))
+        self.groupBox.setGeometry(QtCore.QRect(30, 190, 741, 181))
         self.groupBox.setStyleSheet("border:3px solid white;\n"
 "font-size:15px;\n"
 "background-color:#336699;\n"
@@ -180,7 +179,7 @@ class Ui_MainWindow(object):
         self.txt_sourceIp.raise_()
         self.spinBox_dPort.raise_()
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setGeometry(QtCore.QRect(30, 260, 741, 391))
+        self.groupBox_2.setGeometry(QtCore.QRect(30, 420, 741, 391))
         self.groupBox_2.setStyleSheet("border:3px solid white;\n"
 "font-size:15px;\n"
 "background-color:#336699;\n"
@@ -279,6 +278,16 @@ class Ui_MainWindow(object):
         self.label_7.raise_()
         self.scrollArea.raise_()
         self.label_12.raise_()
+        self.btn_flush = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_flush.setGeometry(QtCore.QRect(220, 100, 91, 33))
+        self.btn_flush.setStyleSheet("background-color: black;\n"
+"color: white;")
+        self.btn_flush.setObjectName("btn_flush")
+        self.btn_save = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_save.setGeometry(QtCore.QRect(490, 100, 91, 33))
+        self.btn_save.setStyleSheet("background-color: black;\n"
+"color: white;")
+        self.btn_save.setObjectName("btn_save")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -345,3 +354,5 @@ class Ui_MainWindow(object):
         self.btn_delete.setText(_translate("MainWindow", "DELETE"))
         self.label_7.setText(_translate("MainWindow", "_______________________________________________________"))
         self.label_12.setText(_translate("MainWindow", "select the index of the rule you wish to delete"))
+        self.btn_flush.setText(_translate("MainWindow", "FLUSH"))
+        self.btn_save.setText(_translate("MainWindow", "SAVE"))

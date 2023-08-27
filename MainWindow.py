@@ -26,7 +26,9 @@ class MainWindow:
         self.ui.btn_display.clicked.connect(self.read_rules)
         self.ui.btn_create.clicked.connect(self.create_rule)
         self.ui.btn_delete.clicked.connect(self.delete_rule)
-    
+        self.ui.btn_flush.clicked.connect(self.flush)
+        self.ui.btn_save.clicked.connect(self.save)
+
     def show(self):
         self.main_win.show()
 
@@ -74,8 +76,11 @@ class MainWindow:
             self.firewall.create_rule(**attributes)
         except Firewall.CommandError as exception:
             self.handle(exception)
+        
+        self.read_rules()
 
     def read_rules(self):
+        table = []
         SHIFT_INDEX_RIGHT = +1
         try:
             table = self.firewall.read_rules(self.ui.comboBoxRead.currentText())
@@ -125,3 +130,9 @@ class MainWindow:
     def reset_deletion(self):
         INVALID_INDEX = 0
         self.ui.spinBoxSelection.setValue(INVALID_INDEX)
+    
+    def flush(self):
+        self.firewall.flush()
+
+    def save(self):
+        self.firewall.save()

@@ -13,7 +13,11 @@ class Firewall:
         self._target = ('ACCEPT', 'REJECT', 'DROP')
         self._protocol = ('TCP', 'UDP', 'ICMP')
         self._option = ( ' --insert ', ' --append ')
+
         self._read_rules_command = 'iptables -L '
+        self._flush_all_command = 'iptables -F'
+        self._save_all_command = 'iptables-save'
+
         self._redirect_to_output_file = '> output_file.txt'
         print('are you a network administrator?')
 
@@ -28,8 +32,6 @@ class Firewall:
         return parsed
 
     def _validate_args(self, chain, target, bottom=True, protocol=DEFAULT_TEXT, source=DEFAULT_TEXT, sport=0, destination=DEFAULT_TEXT, dport=0):
-        print(chain, target, bottom, protocol, source, destination, sport, dport)
-
         protocol = protocol.upper()
         good_mandatory_args = chain in self._chain and target in self._target
         good_bottom_arg = isinstance(bottom, bool)
@@ -81,7 +83,6 @@ class Firewall:
         command += self._format_protocol_and_port(protocol, sport, dport)
         command += self._format_IPs(source, destination)
         command += self._format_target(target)
-        print(command)
         return_value = os.system(command + self._redirect_to_output_file)
         if return_value != 0:
             raise CommandError('THIS COMMAND IS INCORRECT')
@@ -93,3 +94,14 @@ class Firewall:
         return_value = os.system(command)
         if return_value != 0:
             raise CommandError('NUMBER DOES NOT APPEAR IN THE RULES TABLE')
+
+    # Flush the selected chain (all the chains in the table if none is given).  This is equivalent to deleting all the rules one by one
+    def flush(self):
+        return_value = os.system(self._flush_all_command)
+        if return_value != 0:
+            raise CommandError('ERROR WHILE PROCESSING')
+
+    def save(self):
+        return_value = os.system(self._save_all_command)
+        if return_value != 0:
+            raise CommandError('ERROR WHILE PROCESSING')
