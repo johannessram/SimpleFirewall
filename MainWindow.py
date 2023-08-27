@@ -82,6 +82,7 @@ class MainWindow:
         except Firewall.CommandError as exception:
             self.handle(exception)
 
+        self.ui.tableWidget.clear()
         if len(table) == 0:
             self.ui.tableWidget.setRowCount(SHIFT_INDEX_RIGHT)
             return

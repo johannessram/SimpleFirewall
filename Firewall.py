@@ -11,7 +11,7 @@ class Firewall:
     def __init__(self):
         self._chain = ('INPUT', 'OUTPUT', 'FORWARD')
         self._target = ('ACCEPT', 'REJECT', 'DROP')
-        self._protocol = ('TCP', 'UDP')
+        self._protocol = ('TCP', 'UDP', 'ICMP')
         self._option = ( ' --insert ', ' --append ')
         self._read_rules_command = 'iptables -L '
         self._redirect_to_output_file = '> output_file.txt'
@@ -28,6 +28,8 @@ class Firewall:
         return parsed
 
     def _validate_args(self, chain, target, bottom=True, protocol=DEFAULT_TEXT, source=DEFAULT_TEXT, sport=0, destination=DEFAULT_TEXT, dport=0):
+        print(chain, target, bottom, protocol, source, destination, sport, dport)
+
         protocol = protocol.upper()
         good_mandatory_args = chain in self._chain and target in self._target
         good_bottom_arg = isinstance(bottom, bool)
@@ -37,8 +39,10 @@ class Firewall:
         good_port_arg = good_dport_arg and good_sport_arg
 
         good_optionnal_args = good_protocol_arg and good_port_arg and good_bottom_arg
-        if not good_mandatory_args or not good_optionnal_args:
-            raise CommandError('SOME BAD ARGUMENTS GIVEN')
+        if not good_mandatory_args:
+            raise CommandError('SOME BAD ARGUMENT PROVIDED AS chain, target, or option')
+        if not good_optionnal_args:
+            raise CommandError('SOME BAD ARGUMENT PROVIDED AS protocol, source port, destination port, source address, or destination address')
 
     def _format_priority(self, bottom, chain):
         bottom = int(bottom)
@@ -49,7 +53,7 @@ class Firewall:
 
     def _format_protocol_and_port(self, protocol, sport, dport):
         if (dport != 0 or sport != 0) and protocol == DEFAULT_TEXT:
-            raise CommandError('SPECIFYING A dport WITHOUT A PROTOCOL')
+            raise CommandError('SPECIFYING A DPORT WITHOUT A PROTOCOL')
         command = ''
         if protocol != DEFAULT_TEXT:
             command += ' --protocol ' + protocol
